@@ -1,0 +1,32 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "servers": {
+      "firebase": {
+        "type": "local",
+        "command": ["npx", "-y", "firebase-tools@15", "mcp", "--only", "auth,firestore"],
+        "cwd": ".",
+        "timeout": {
+          "startup": 60000,
+          "catalog": 60000
+        }
+      }
+    }
+  },
+  "permissions": [
+    { "action": "firebase_firebase_list_projects", "resource": "*", "effect": "deny" },
+    { "action": "firebase_firebase_create_project", "resource": "*", "effect": "deny" },
+    { "action": "firebase_firebase_update_environment", "resource": "*", "effect": "deny" },
+    { "action": "firebase_firebase_login", "resource": "*", "effect": "deny" },
+    { "action": "firebase_firebase_logout", "resource": "*", "effect": "deny" },
+    { "action": "firebase_firebase_deploy", "resource": "*", "effect": "deny" },
+    { "action": "firebase_firebase_init", "resource": "*", "effect": "deny" },
+    { "action": "firebase_firestore_create_database", "resource": "*", "effect": "deny" },
+    { "action": "firebase_firestore_delete_database", "resource": "*", "effect": "deny" },
+    { "action": "firebase_firestore_update_database", "resource": "*", "effect": "deny" },
+    { "action": "firebase_firestore_create_backup_schedule", "resource": "*", "effect": "deny" },
+    { "action": "firebase_firestore_delete_backup", "resource": "*", "effect": "deny" },
+    { "action": "firebase_firestore_delete_backup_schedule", "resource": "*", "effect": "deny" },
+    { "action": "firebase_firestore_delete_index", "resource": "*", "effect": "deny" }
+  ]
+}

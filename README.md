@@ -26,7 +26,7 @@ pnpm dev
 2. Authentication → Sign-in method → включите **Email/Password**.
 3. Authentication → Users → **Add user**: email владельца и длинный уникальный пароль.
 4. Authentication → Settings → Authorized domains: добавьте `localhost` и `<username>.github.io` (только хост, без `https://` и пути).
-5. Firestore → **Create database** (production mode).
+5. Firestore → **Create database** (production mode) или выполните `pnpm firebase:create-db` (создаст `(default)` в `europe-west3`).
 6. Скопируйте UID пользователя и замените `<OWNER_UID>` в `firestore.rules`. UID должен быть только в этом файле.
 7. Задеплойте правила:
 
@@ -47,6 +47,7 @@ pnpm test                # unit-тесты
 pnpm test:rules          # Firestore Rules (нужен Java + emulator)
 pnpm test:e2e            # Playwright smoke-тесты
 pnpm firebase:emulators  # локальные эмуляторы
+pnpm firebase:create-db  # создать Firestore (default) в europe-west3
 pnpm firebase:deploy:rules
 ```
 

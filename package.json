@@ -13,6 +13,7 @@
     "test:e2e": "playwright test",
     "firebase:init-scope": "node scripts/init-firebaserc.mjs",
     "firebase:emulators": "node scripts/firebase-guard.mjs && firebase emulators:start",
+    "firebase:create-db": "node scripts/firebase-guard.mjs && firebase --non-interactive firestore:databases:create \"(default)\" --location europe-west3",
     "firebase:deploy:rules": "node scripts/firebase-guard.mjs deploy && firebase deploy --only firestore:rules,firestore:indexes",
     "format": "oxfmt"
   },

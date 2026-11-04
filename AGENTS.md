@@ -41,6 +41,7 @@ Tailwind emits utility classes in `@layer utilities`, and CSS outside any cascad
 - This repository is bound to exactly one Firebase project: `projects.default` in `.firebaserc`.
 - Never run `firebase projects:list`, `firebase use`, `firebase init`, or pass `--project` for another project.
 - Never call MCP tools that list/create projects or change the active project/user.
+- Firestore MCP tools accept `parent` resource names; always use the project from `.firebaserc`, never another project ID.
 - All Firebase commands go through `pnpm firebase:*`.
 - The owner UID appears only in `firestore.rules`. Never print it, copy it to `.env`, or put it in client code.
 - Do not read or print values from `.env.local`; only variable names may be inspected.

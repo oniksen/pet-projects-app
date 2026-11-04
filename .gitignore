@@ -1,0 +1,48 @@
+# deps / build
+node_modules/
+dist/
+dev-dist/
+build/
+.cache/
+.vite/
+vite.config.*.timestamp-*
+*.tsbuildinfo
+
+# env — real values only locally
+.env
+.env.*
+!.env.example
+
+# Firebase
+.firebase/
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+*-firebase-adminsdk-*.json
+service-account*.json
+*.serviceAccount.json
+
+# tests
+coverage/
+playwright-report/
+test-results/
+blob-report/
+
+# logs / temp
+logs/
+*.log
+*-debug.log*
+.claude-replay.*
+.tmp-*
+
+# Figma / harness
+/.figma/design-context/
+/.plugins/
+/.opencode-skills/
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json

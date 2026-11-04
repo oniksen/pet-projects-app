@@ -1,0 +1,15 @@
+{
+  "title": "av.workspace — проекты и заметки",
+  "description": "Портфолио и приватный дашборд проектов, этапов и заметок.",
+  "language": "ru",
+  "robots": {
+    "index": true
+  },
+  "icons": {
+    "icon": "favicon.svg"
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

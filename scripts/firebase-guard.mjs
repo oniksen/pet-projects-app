@@ -52,8 +52,9 @@ if (!fs.existsSync(rulesPath)) fail('firestore.rules not found')
 const rules = fs.readFileSync(rulesPath, 'utf8')
 if (!rules.includes('function isOwner()')) fail('firestore.rules is missing isOwner()')
 
-if (mode === 'deploy' && rules.includes('<OWNER_UID>')) {
-  fail('replace <OWNER_UID> in firestore.rules before deploy')
+const DUMMY_OWNER_UID = 'dummy-owner-uid'
+if (mode === 'deploy' && (rules.includes('<OWNER_UID>') || rules.includes(DUMMY_OWNER_UID))) {
+  fail('replace dummy-owner-uid with the real owner UID in firestore.rules before deploy')
 }
 
 console.log('[firebase-guard] Firebase scope OK')

@@ -27,14 +27,14 @@ pnpm dev
 3. Authentication → Users → **Add user**: email владельца и длинный уникальный пароль.
 4. Authentication → Settings → Authorized domains: добавьте `localhost` и `<username>.github.io` (только хост, без `https://` и пути).
 5. Firestore → **Create database** (production mode) или выполните `pnpm firebase:create-db` (создаст `(default)` в `europe-west3`).
-6. Скопируйте UID пользователя и замените `<OWNER_UID>` в `firestore.rules`. UID должен быть только в этом файле.
+6. Скопируйте UID пользователя и замените `dummy-owner-uid` в `firestore.rules`. UID должен быть только в этом файле.
 7. Задеплойте правила:
 
 ```bash
 pnpm firebase:deploy:rules
 ```
 
-Скрипт проверяет, что `.firebaserc` и `VITE_FIREBASE_PROJECT_ID` совпадают, а `<OWNER_UID>` заменён.
+Скрипт проверяет, что `.firebaserc` и `VITE_FIREBASE_PROJECT_ID` совпадают, а `dummy-owner-uid` заменён.
 
 ## Скрипты
 
@@ -71,7 +71,7 @@ pnpm firebase:deploy:rules
 
 ## Безопасность
 
-- UID владельца хранится только в `firestore.rules`; в клиенте его нет.
+- UID владельца хранится только в `firestore.rules`; сейчас там dummy-заглушка `dummy-owner-uid`, которую нужно заменить перед деплоем. В клиенте UID нет.
 - Признак админа в UI — успешное чтение защищённого `meta/owner`. Не-владелец разлогинивается.
 - Гости видят только `visibility == 'public'`; запрос без этого фильтра Firestore отклоняет.
 - Заметки и приватные проекты доступны только владельцу.

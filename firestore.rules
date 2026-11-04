@@ -4,10 +4,10 @@ service cloud.firestore {
   match /databases/{database}/documents {
 
     // The owner UID is intentionally stored only in this file.
-    // Replace <OWNER_UID> with the Firebase Authentication UID before deploy.
+    // This is a dummy value: replace it with the real Firebase Authentication UID before deploy.
     function isOwner() {
       return request.auth != null
-        && request.auth.uid == '<OWNER_UID>';
+        && request.auth.uid == 'dummy-owner-uid';
     }
 
     function isPublicProject(projectId) {

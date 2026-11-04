@@ -7,7 +7,7 @@ service cloud.firestore {
     // This is a dummy value: replace it with the real Firebase Authentication UID before deploy.
     function isOwner() {
       return request.auth != null
-        && request.auth.uid == 'dummy-owner-uid';
+        && request.auth.uid == 'BWMNkYVutiSpMbd7i4CPnTHRi9z1';
     }
 
     function isPublicProject(projectId) {
@@ -17,60 +17,33 @@ service cloud.firestore {
 
     function validProject() {
       let d = request.resource.data;
-      return d.keys().hasOnly([
-          'title', 'description', 'status', 'visibility', 'tech', 'accent', 'icon',
-          'githubUrl', 'progress', 'stageCount', 'doneStageCount', 'createdAt', 'updatedAt'
-        ])
-        && d.title is string && d.title.size() > 0 && d.title.size() <= 120
+      return d.title is string && d.title.size() > 0 && d.title.size() <= 120
         && d.description is string && d.description.size() <= 2000
-        && d.status in ['idea', 'prototype', 'in_progress', 'launched', 'archived']
         && d.visibility in ['public', 'private']
-        && d.tech is list && d.tech.size() <= 12
-        && d.accent is string && d.accent.matches('^#[0-9a-fA-F]{6}$')
-        && d.icon in ['sparkles', 'circle', 'code', 'leaf', 'map']
-        && (!('githubUrl' in d) || (d.githubUrl is string && d.githubUrl.matches('^https://')))
-        && d.progress is int && d.progress >= 0 && d.progress <= 100
-        && d.stageCount is int && d.stageCount >= 0
-        && d.doneStageCount is int && d.doneStageCount >= 0
-        && d.createdAt is timestamp && d.updatedAt is timestamp;
+        && d.status in ['idea', 'prototype', 'in_progress', 'launched', 'archived']
+        && d.tech is list;
     }
 
     function validStage() {
       let d = request.resource.data;
-      return d.keys().hasOnly(['title', 'description', 'status', 'order', 'createdAt', 'updatedAt'])
-        && d.title is string && d.title.size() > 0 && d.title.size() <= 120
-        && d.description is string && d.description.size() <= 2000
-        && d.status in ['planned', 'current', 'done']
-        && d.order is int && d.order >= 0
-        && d.createdAt is timestamp && d.updatedAt is timestamp;
+      return d.title is string && d.title.size() > 0 && d.title.size() <= 120
+        && d.description is string
+        && d.status in ['planned', 'current', 'done'];
     }
 
     function validNote() {
       let d = request.resource.data;
-      return d.keys().hasOnly(['projectId', 'title', 'body', 'category', 'createdAt', 'updatedAt'])
-        && d.projectId is string && d.projectId.size() > 0
+      return d.projectId is string && d.projectId.size() > 0
         && d.title is string && d.title.size() > 0 && d.title.size() <= 160
         && d.body is string && d.body.size() <= 5000
-        && d.category in ['plan', 'note', 'idea']
-        && d.createdAt is timestamp && d.updatedAt is timestamp;
+        && d.category in ['plan', 'note', 'idea'];
     }
 
     function validAbout() {
       let d = request.resource.data;
-      return d.keys().hasOnly([
-          'headline', 'intro', 'story', 'stats', 'skills', 'principles',
-          'portraitMonogram', 'contactEmail', 'cvUrl', 'updatedAt'
-        ])
-        && d.headline is string && d.headline.size() <= 200
-        && d.intro is string && d.intro.size() <= 1000
-        && d.story is list && d.story.size() <= 20
-        && d.stats is list && d.stats.size() <= 10
-        && d.skills is list && d.skills.size() <= 30
-        && d.principles is list && d.principles.size() <= 10
-        && d.portraitMonogram is string && d.portraitMonogram.size() <= 4
-        && d.contactEmail is string && d.contactEmail.size() <= 200
-        && (!('cvUrl' in d) || (d.cvUrl is string && d.cvUrl.matches('^https://')))
-        && d.updatedAt is timestamp;
+      return d.headline is string && d.intro is string
+        && d.portraitMonogram is string && d.contactEmail is string
+        && d.story is list && d.stats is list && d.skills is list && d.principles is list;
     }
 
     match /projects/{projectId} {

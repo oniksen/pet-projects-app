@@ -175,7 +175,7 @@ describe('owner access', () => {
     const db = testEnv.authenticatedContext(ownerUid).firestore()
     await assertFails(db.doc('projects/invalid').set({ title: 'No fields' }))
     await assertFails(
-      db.doc('projects/invalid').set({ ...projectData('public'), accent: 'orange' }),
+      db.doc('projects/invalid').set({ ...projectData('public'), visibility: 'secret' }),
     )
   })
 

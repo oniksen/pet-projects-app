@@ -30,8 +30,9 @@ function asProject(id: string, data: Record<string, unknown>): Project {
   return { id, ...(data as Omit<Project, 'id'>) }
 }
 
-function sortByUpdatedAtDesc<T extends { updatedAt: Timestamp }>(items: T[]): T[] {
-  return [...items].sort((a, b) => b.updatedAt.toMillis() - a.updatedAt.toMillis())
+function sortByUpdatedAtDesc<T extends { updatedAt?: Timestamp }>(items: T[]): T[] {
+  const time = (value: Timestamp | undefined) => (value instanceof Timestamp ? value.toMillis() : 0)
+  return [...items].sort((a, b) => time(b.updatedAt) - time(a.updatedAt))
 }
 
 export function subscribeProjects(

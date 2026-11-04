@@ -26,7 +26,7 @@ function Header() {
   return (
     <header>
       <Link to="/" className="brand">
-        <span>av.</span>workspace
+        <span>oniksen.</span>workspace
       </Link>
 
       <nav>
@@ -81,7 +81,7 @@ function Header() {
 function Footer() {
   return (
     <footer>
-      <span>© {new Date().getFullYear()} av.workspace</span>
+      <span>© {new Date().getFullYear()} oniksen.workspace</span>
       <div>
         <span><i /> Готов к работе и новым идеям</span>
         <a href="mailto:hello@example.com">Написать</a>
